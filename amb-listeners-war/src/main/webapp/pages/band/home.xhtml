@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/pages/templates/main-template.xhtml">
+
+	<ui:define name="title">Band Home</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h4>Band Home</h4>
+			
+			
+			<label>Name</label>
+			<h:inputText class="form-control" value="#{band.name}" />
+
+			<label>Description</label>
+			<h:inputTextarea class="form-control" row="10" col="10" value="#{band.description}" />
+			<span class="help-block">Describe here the band details...</span>
+
+			<label>Musical Style</label>
+			<h:selectOneMenu class="form-control"  value="#{band.musicalStyle}">
+				<f:selectItems value="#{bandBean.musicalStyles}" />
+			</h:selectOneMenu>
+			
+			<h:commandButton class="btn btn-primary" value="Submit" action="#{bandBean.submit}" />
+			<h:commandButton class="btn btn-default" value="Cancel" action="/home?faces-redirect=true" />
+		</h:form>
+	</ui:define>
+</ui:composition>

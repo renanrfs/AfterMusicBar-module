@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/pages/templates/main-template.xhtml">
+
+	<ui:define name="content">
+		<h:form>
+			<h4>Schedule</h4>
+			<h:commandButton class="btn btn-default" value="Schedule" action="/pages/schedule/home" />
+
+			<h4>Band</h4>
+			<h:commandButton class="btn btn-default" value="Band" action="/pages/band/home" />
+
+			<h4>Menu</h4>
+			<h:commandButton class="btn btn-default" value="Menu" action="/pages/menu/home" />
+		</h:form>
+	</ui:define>
+</ui:composition>

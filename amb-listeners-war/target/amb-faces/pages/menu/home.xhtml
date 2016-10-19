@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/pages/templates/main-template.xhtml">
+
+	<ui:define name="title">Menu Home</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h4>Menu Home</h4>
+			
+			<label>Name</label>
+			<h:inputText class="form-control" value="#{menuBean.menu.name}" />
+
+			<label>Description</label>
+			<h:inputTextarea class="form-control" row="10" col="10" value="#{menuBean.menu.description}" />
+			<span class="help-block">Describe here the menu details...</span>
+
+			<label>Items</label>
+			<h:dataTable class="table table-hover" value="#{menuBean.menu.items}" var="item">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ID" />
+					</f:facet>
+					<h:outputText value="#{item.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Item" />
+					</f:facet>
+					<h:outputText value="#{item.name}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Description" />
+					</f:facet>
+					<h:outputText value="#{item.description}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Price" />
+					</f:facet>
+					<h:outputText value="#{item.price}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Action" />
+					</f:facet>
+					<h:commandButton class="btn btn-default" value="Edit" action="#{menuBean.edit(item.id)}" />
+					<h:commandButton class="btn btn-default" value="Delete" action="#{menuBean.delete(item.id)}" />
+				</h:column>
+			</h:dataTable>
+
+
+			<label>Created</label>
+			<p class="help-block">#{menuBean.menu.creationUser}</p>
+			<p class="help-block">#{menuBean.menu.creationDate}</p>
+
+			<label>Updated</label>
+			<p class="help-block">#{menuBean.menu.updateUser}</p>
+			<p class="help-block">#{menuBean.menu.updateDate}</p>
+			
+			<h:commandButton class="btn btn-primary" value="Submit" action="#{menuBean.submit}" />
+			<h:commandButton class="btn btn-default" value="Cancel" action="/home?faces-redirect=true" />
+		</h:form>
+	</ui:define>
+</ui:composition>
